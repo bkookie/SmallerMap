@@ -1,0 +1,11 @@
+{
+  "id": "ScaledMap",
+  "name": "Scaled Map",
+  "author": "Chunker",
+  "description": "Shrink the map to fit on the screen without scrolling.",
+  "version": "v1.0.0",
+  "has_pck": true,
+  "has_dll": true,
+  "dependencies": [],
+  "affects_gameplay": true
+}
