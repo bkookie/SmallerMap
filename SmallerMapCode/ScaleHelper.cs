@@ -6,9 +6,6 @@ namespace SmallerMap.SmallerMapCode;
 
 public static class ScaleHelper
 {
-    public const float MapScale = 0.43f;
-    public const float IconScale = 0.55f;
-
     public static IEnumerable<CodeInstruction> ScaleVector2Identities(IEnumerable<CodeInstruction> instructions, float scale, int numInstancesToEdit = -1)
     {
         List<CodeInstruction> codes = [.. instructions];

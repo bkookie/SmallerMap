@@ -1,0 +1,20 @@
+﻿{
+  "SMALLERMAP.mod_title": "Smaller Map",
+
+  "SMALLERMAP-SCALING_SETTINGS.title": "All settings require restart",
+
+  "SMALLERMAP-MAP_SCALE.title": "Map Scale",
+  "SMALLERMAP-MAP_SCALE.hover.desc": "Default: 0.43",
+
+  "SMALLERMAP-ICON_SCALE.title": "Icon Scale",
+  "SMALLERMAP-ICON_SCALE.hover.desc": "Default: 0.55",
+
+  "SMALLERMAP-ROOM_OFFSET_Y.title": "Room Offset Y",
+  "SMALLERMAP-ROOM_OFFSET_Y.hover.desc": "Negative values shift all rooms upwards.\nDefault: -75",
+
+  "SMALLERMAP-BOSS_OFFSET_Y.title": "Boss Offset Y",
+  "SMALLERMAP-BOSS_OFFSET_Y.hover.desc": "Negative values shift the boss upwards.\nDefault: 100",
+
+  "SMALLERMAP-BOSS2_OFFSET_Y.title": "Boss 2 Offset Y",
+  "SMALLERMAP-BOSS2_OFFSET_Y.hover.desc": "Negative values shift the boss upwards.\nDefault: -100"
+}

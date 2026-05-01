@@ -1,6 +1,8 @@
+using BaseLib.Config;
 using Godot;
 using HarmonyLib;
 using MegaCrit.Sts2.Core.Modding;
+using SmallerMap.SmallerMapCode;
 
 namespace SmallerMap;
 
@@ -13,6 +15,8 @@ public partial class MainFile : Node
 
     public static void Initialize()
     {
+        ModConfigRegistry.Register(ModId, new Config()); // Call this before Harmony; we need to read the settings
+
         Harmony harmony = new(ModId);
 
         harmony.PatchAll();

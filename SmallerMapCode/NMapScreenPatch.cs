@@ -43,19 +43,19 @@ public static class ScaleMapPatch
                 {
                     if (operand == 740f)
                     {
-                        codes[i].operand = operand - 75f; // Shift all rooms up. Creates a little space between the Ancient and first row of rooms
+                        codes[i].operand = operand + Config.RoomOffsetY; // Shift all rooms up. Creates a little space between the Ancient and first row of rooms
                     }
                     else if (operand == -1980f)
                     {
-                        codes[i].operand = operand * ScaleHelper.MapScale + 100f; // Shift Boss 1 down a little
+                        codes[i].operand = operand * Config.MapScale + Config.BossOffsetY; // Shift Boss 1 down a little
                     }
                     else if (operand == -2280f)
                     {
-                        codes[i].operand = operand * ScaleHelper.MapScale - 100f; // Shift Boss 2 up a little
+                        codes[i].operand = operand * Config.MapScale + Config.Boss2OffsetY; // Shift Boss 2 up a little
                     }
                     else
                     {
-                        codes[i].operand = operand * ScaleHelper.MapScale; // Scale normally
+                        codes[i].operand = operand * Config.MapScale; // Scale normally
                     }
                 }
             }

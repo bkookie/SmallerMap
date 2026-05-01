@@ -14,7 +14,7 @@ public static class ScaleOscillatingIconPatch
         // _iconContainer.Scale = Vector2.One * scale * (Mathf.Sin(_elapsedTime) * 0.25f + 1.2f);
         // _iconContainer.Scale = _iconContainer.Scale.Lerp(Vector2.One * scale, 0.5f);
 
-        return ScaleHelper.ScaleVector2Identities(instructions, ScaleHelper.IconScale);
+        return ScaleHelper.ScaleVector2Identities(instructions, Config.IconScale);
     }
 }
 
@@ -25,7 +25,7 @@ public static class ScaleDefaultIconPatch
     [HarmonyTranspiler]
     private static IEnumerable<CodeInstruction> ScaleDefaultIcon(IEnumerable<CodeInstruction> instructions)
     {
-        return ScaleHelper.ScaleVector2Identities(instructions, ScaleHelper.IconScale);
+        return ScaleHelper.ScaleVector2Identities(instructions, Config.IconScale);
     }
 }
 
@@ -36,7 +36,7 @@ public static class ScaleSelectedIconPatch
     [HarmonyTranspiler]
     private static IEnumerable<CodeInstruction> ScaleSelectedIcon(IEnumerable<CodeInstruction> instructions)
     {
-        return ScaleHelper.ScaleVector2Identities(instructions, ScaleHelper.IconScale, numInstancesToEdit: 1); // Only scale the icon container, not the icons as well
+        return ScaleHelper.ScaleVector2Identities(instructions, Config.IconScale, numInstancesToEdit: 1); // Only scale the icon container, not the icons as well
     }
 }
 
@@ -55,7 +55,7 @@ public static class ScaleSelectedIconPatch
 //                float operand = (float)codes[i].operand;
 //                if (codes[i].opcode == OpCodes.Ldc_R4 && operand == 1.45f)
 //                {
-//                    codes[i].operand = operand * ScaleHelper.IconScale;
+//                    codes[i].operand = operand * Config.IconScale;
 //                    break;
 //                }
 //            }
@@ -79,7 +79,7 @@ public static class ScaleSelectedIconPatch
 //                float operand = (float)codes[i].operand;
 //                if (codes[i].opcode == OpCodes.Ldc_R4 && operand == 0.9f)
 //                {
-//                    codes[i].operand = operand * ScaleHelper.IconScale;
+//                    codes[i].operand = operand * Config.IconScale;
 //                    break;
 //                }
 //            }
