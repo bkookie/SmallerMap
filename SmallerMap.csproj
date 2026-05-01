@@ -104,6 +104,7 @@
     </ItemGroup>
 
     <ItemGroup>
+        <PackageReference Include="Alchyr.Sts2.ModAnalyzers" Version="0.1.9" />
         <PackageReference Include="BepInEx.AssemblyPublicizer.MSBuild" Version="0.4.3">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

@@ -16,8 +16,8 @@ public static class ScaleMapPatch
         HashSet<float> constants = [];
         constants.Add(2325f);   // Map Height
         constants.Add(1050f);   // Map Width
-        constants.Add(-500f);   // Offset X (centering)
-        constants.Add(740f);    // Offset Y
+        constants.Add(-500f);   // Room Offset X (centering)
+        constants.Add(740f);    // Room Offset Y
         constants.Add(-21f);    // Jitter Lower X
         constants.Add(21f);     // Jitter Upper X
         constants.Add(-25f);    // Jitter Lower Y
@@ -61,16 +61,16 @@ public static class ScaleMapPatch
             }
             else if (localBuilder == null && codes[i].Calls(typeof(NNormalMapPoint).GetMethod(nameof(NNormalMapPoint.Create), [typeof(MapPoint), typeof(NMapScreen), typeof(IRunState)])))
             {
-                // Find the local builder that stores the NNormalMapPoint object (on the next line)
+                // Find the local builder that stores the NNormalMapPoint object (gets stored on the following instruction)
                 if (codes[i + 1].opcode == OpCodes.Stloc_S && codes[i + 1].operand is LocalBuilder lb)
                 {
                     localBuilder = lb;
                     i++;
                 }
             }
-            else if (localBuilder != null && codes[i].Calls(typeof(NNormalMapPoint).GetMethod(nameof(NNormalMapPoint.SetAngle)))) // Insert after this line
+            else if (localBuilder != null && codes[i].Calls(typeof(NNormalMapPoint).GetMethod(nameof(NNormalMapPoint.SetAngle)))) // Insert after this instruction
             {
-                // Call NNormalMapPoint.RefreshState() for all points when creating the map, otherwise icons will not be scaled until exiting the current room.
+                // Calls NNormalMapPoint.RefreshState() for all points when creating the map (inside the loop), otherwise icons will not be scaled until exiting the current room.
 
                 MethodInfo method = AccessTools.Method(typeof(NNormalMapPoint), nameof(NNormalMapPoint.RefreshState));
 
