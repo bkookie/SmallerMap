@@ -42,22 +42,22 @@ public static class ScaleHelper
     /// </summary>
     /// <param name="instructions">The list of instructions to modify.</param>
     /// <param name="index">The current instruction index. New instructions are inserted after, then increments the index.</param>
-    /// <param name="staticMethod">The static method to push onto the stack.</param>
+    /// <param name="method">The method call to push onto the stack.</param>
     /// <param name="opCode">The operation to perform.</param>
-    public static void InsertCallInstruction(List<CodeInstruction> instructions, ref int index, MethodInfo staticMethod, OpCode opCode)
+    public static void InsertCallInstruction(List<CodeInstruction> instructions, ref int index, MethodInfo method, OpCode opCode)
     {
-        instructions.Insert(++index, new CodeInstruction(OpCodes.Call, staticMethod));
+        instructions.Insert(++index, new CodeInstruction(OpCodes.Call, method));
         instructions.Insert(++index, new CodeInstruction(opCode));
     }
 
     /// <summary>
-    /// Multiplies all instances of <see cref="Vector2.One"/> by the value provided by <paramref name="staticMethod"/>.
+    /// Multiplies all instances of <see cref="Vector2.One"/> by the value returned by <paramref name="method"/>.
     /// </summary>
     /// <param name="instructions">The list of instructions to modify.</param>
-    /// <param name="staticMethod">The static method to push onto the stack.</param>
+    /// <param name="method">The method call to push onto the stack.</param>
     /// <param name="numInstancesToEdit">How many instances to modify.</param>
     /// <returns></returns>
-    public static IEnumerable<CodeInstruction> ScaleVector2Identities(IEnumerable<CodeInstruction> instructions, MethodInfo staticMethod, int numInstancesToEdit = -1)
+    public static IEnumerable<CodeInstruction> ScaleVector2Identities(IEnumerable<CodeInstruction> instructions, MethodInfo method, int numInstancesToEdit = -1)
     {
         List<CodeInstruction> codes = [.. instructions];
 
@@ -68,7 +68,7 @@ public static class ScaleHelper
 
             if (codes[i].Calls(typeof(Vector2).GetMethod("get_One")))
             {
-                codes.Insert(++i, new CodeInstruction(OpCodes.Call, staticMethod)); // Push property getter
+                codes.Insert(++i, new CodeInstruction(OpCodes.Call, method)); // Push property getter
                 codes.Insert(++i, new CodeInstruction(OpCodes.Call, typeof(Vector2).GetMethod("op_Multiply", [typeof(Vector2), typeof(float)]))); // Vector2.One * scale
 
                 numInstancesToEdit--;
