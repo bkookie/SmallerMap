@@ -5,7 +5,7 @@ using MegaCrit.Sts2.Core.Map;
 using MegaCrit.Sts2.Core.Nodes.Screens.Map;
 using MegaCrit.Sts2.Core.Runs;
 
-namespace ScaledMap.ScaledMapCode;
+namespace SmallerMap.SmallerMapCode;
 
 [HarmonyPatch(typeof(NMapScreen), nameof(NMapScreen.SetMap), MethodType.Normal)]
 public static class ScaleMapPatch

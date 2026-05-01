@@ -1,6 +1,6 @@
 {
-  "id": "ScaledMap",
-  "name": "Scaled Map",
+  "id": "SmallerMap",
+  "name": "Smaller Map",
   "author": "Chunker",
   "description": "Shrink the map to fit on the screen without scrolling.",
   "version": "v1.0.0",

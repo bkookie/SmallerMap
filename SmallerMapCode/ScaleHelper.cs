@@ -2,7 +2,7 @@
 using Godot;
 using HarmonyLib;
 
-namespace ScaledMap.ScaledMapCode;
+namespace SmallerMap.SmallerMapCode;
 
 public static class ScaleHelper
 {

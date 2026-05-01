@@ -1,1 +1,1 @@
-# ScaledMap
+# Smaller Map

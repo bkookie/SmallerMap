@@ -78,15 +78,15 @@
 
     <ItemGroup>
         <PackageReference Include="Alchyr.Sts2.BaseLib" Version="3.1.0" PrivateAssets="All" />
-        <AdditionalFiles Include="ScaledMap/localization/**/*.json" />
+        <AdditionalFiles Include="SmallerMap/localization/**/*.json" />
     </ItemGroup>
 
     <ItemGroup>
-        <Compile Remove="ScaledMap/**" />
+        <Compile Remove="SmallerMap/**" />
         <Compile Remove="materials/**" />
         <Compile Remove="shaders/**" />
         <Compile Remove="images/**" />
-        <EmbeddedResource Remove="ScaledMap/**" />
+        <EmbeddedResource Remove="SmallerMap/**" />
         <EmbeddedResource Remove="materials/**" />
         <EmbeddedResource Remove="shaders/**" />
         <EmbeddedResource Remove="images/**" />
@@ -94,9 +94,9 @@
 
     <ItemGroup>
         <None Include=".gitignore" />
-        <None Include="ScaledMap.json" />
+        <None Include="SmallerMap.json" />
         <None Include="project.godot" />
-        <None Include="ScaledMap/**" />
+        <None Include="SmallerMap/**" />
     </ItemGroup>
 
     <ItemGroup>
@@ -114,7 +114,7 @@
     <Target Name="CopyToModsFolderOnBuild" AfterTargets="PostBuildEvent">
         <Message Text="Copying .dll and manifest to mods folder." Importance="high" />
         <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(ModsPath)$(MSBuildProjectName)/" />
-        <Copy SourceFiles="ScaledMap.json" DestinationFolder="$(ModsPath)$(MSBuildProjectName)/" />
+        <Copy SourceFiles="SmallerMap.json" DestinationFolder="$(ModsPath)$(MSBuildProjectName)/" />
         <Message Text="Copying BaseLib to mods folder." Importance="high" />
         <ItemGroup>
             <BaseLibFiles Include="$(NuGetPackageRoot)/alchyr.sts2.baselib/**/lib/**/BaseLib.dll;$(NuGetPackageRoot)/alchyr.sts2.baselib/**/Content/BaseLib.pck;$(NuGetPackageRoot)/alchyr.sts2.baselib/**/Content/BaseLib.json;" />

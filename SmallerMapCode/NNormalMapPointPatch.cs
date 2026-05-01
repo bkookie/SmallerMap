@@ -1,7 +1,7 @@
 ﻿using HarmonyLib;
 using MegaCrit.Sts2.Core.Nodes.Screens.Map;
 
-namespace ScaledMap.ScaledMapCode;
+namespace SmallerMap.SmallerMapCode;
 
 [HarmonyPatch(typeof(NNormalMapPoint), nameof(NNormalMapPoint._Process), MethodType.Normal)]
 public static class ScaleOscillatingIconPatch
