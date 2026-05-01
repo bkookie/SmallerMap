@@ -18,7 +18,9 @@ public partial class MainFile : Node
         ModConfigRegistry.Register(ModId, new Config()); // Call this before Harmony; we need to read the settings
 
         Harmony harmony = new(ModId);
-
+#if DEBUG
+        Harmony.DEBUG = true;
+#endif
         harmony.PatchAll();
     }
 }
