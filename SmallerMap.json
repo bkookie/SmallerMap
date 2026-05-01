@@ -1,7 +1,7 @@
 {
   "id": "SmallerMap",
   "name": "Smaller Map",
-  "author": "Chunker",
+  "author": "chunker",
   "description": "Shrink the map to fit on the screen without scrolling.",
   "version": "v1.0.0",
   "has_pck": true,
