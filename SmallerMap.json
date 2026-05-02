@@ -3,7 +3,7 @@
   "name": "Smaller Map",
   "author": "chunker",
   "description": "Shrink the map to fit on the screen without scrolling.",
-  "version": "v1.1.0",
+  "version": "v1.2.0",
   "has_pck": true,
   "has_dll": true,
   "dependencies": ["BaseLib"],
