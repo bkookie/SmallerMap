@@ -20,6 +20,8 @@ internal class Config : SimpleModConfig
     [ConfigSlider(-200, 200, 1)]
     public static float BossOffsetY { get; set; } = 100f;
 
+
+    private const float Boss2OffsetYFromBoss1 = -350f;
     [ConfigIgnore]
-    public static float Boss2OffsetY => -1980f * MapScale + BossOffsetY + ScaleHelper.Boss2OffsetY;
+    public static float Boss2OffsetY => -1980f * MapScale + BossOffsetY + Boss2OffsetYFromBoss1;
 }

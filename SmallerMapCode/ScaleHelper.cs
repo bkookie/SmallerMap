@@ -22,8 +22,6 @@ public static class ScaleHelper
     private static float EffectiveBossOffsetY => IsDisabled ? 0f : Config.BossOffsetY;
     private static float EffectiveBoss2OffsetY => IsDisabled ? 0f : Config.Boss2OffsetY;
 
-    public const float Boss2OffsetY = -350f;
-
     /// <summary>
     /// Pushes a float constant onto the stack, then performs an operation on it.
     /// </summary>
