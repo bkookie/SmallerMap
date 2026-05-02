@@ -14,13 +14,13 @@ public static class ScaleHelper
     public static readonly MethodInfo BossOffsetYProperty = AccessTools.PropertyGetter(typeof(ScaleHelper), nameof(EffectiveBossOffsetY));
     public static readonly MethodInfo Boss2OffsetYProperty = AccessTools.PropertyGetter(typeof(ScaleHelper), nameof(EffectiveBoss2OffsetY));
 
-    private static bool IsMultiplayerAndDisabled => Config.DisableInMultiplayer && RunManager.Instance.IsInProgress && !RunManager.Instance.IsSinglePlayerOrFakeMultiplayer;
+    private static bool IsDisabled => Config.DisableMod || Config.DisableInMultiplayer && RunManager.Instance.IsInProgress && !RunManager.Instance.IsSinglePlayerOrFakeMultiplayer;
 
-    private static float EffectiveMapScale => IsMultiplayerAndDisabled ? 1f : Config.MapScale;
-    private static float EffectiveIconScale => IsMultiplayerAndDisabled ? 1f : Config.IconScale;
-    private static float EffectiveRoomOffsetY => IsMultiplayerAndDisabled ? 0f : Config.RoomOffsetY;
-    private static float EffectiveBossOffsetY => IsMultiplayerAndDisabled ? 0f : Config.BossOffsetY;
-    private static float EffectiveBoss2OffsetY => IsMultiplayerAndDisabled ? 0f : Config.Boss2OffsetY;
+    private static float EffectiveMapScale => IsDisabled ? 1f : Config.MapScale;
+    private static float EffectiveIconScale => IsDisabled ? 1f : Config.IconScale;
+    private static float EffectiveRoomOffsetY => IsDisabled ? 0f : Config.RoomOffsetY;
+    private static float EffectiveBossOffsetY => IsDisabled ? 0f : Config.BossOffsetY;
+    private static float EffectiveBoss2OffsetY => IsDisabled ? 0f : Config.Boss2OffsetY;
 
     public const float Boss2OffsetY = -350f;
 

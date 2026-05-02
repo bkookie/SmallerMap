@@ -1,8 +1,11 @@
 ﻿{
   "SMALLERMAP.mod_title": "Smaller Map",
 
+  "SMALLERMAP-DISABLE_MOD.title": "Disable Mod",
+  "SMALLERMAP-DISABLE_MOD.hover.desc": "Can turn off without restart.",
+
   "SMALLERMAP-DISABLE_IN_MULTIPLAYER.title": "Disable In Multiplayer",
-  "SMALLERMAP-DISABLE_IN_MULTIPLAYER.hover.desc": "Drawings wont line up if players have different map scales.\nDefault: true",
+  "SMALLERMAP-DISABLE_IN_MULTIPLAYER.hover.desc": "Drawings wont line up if players have different map scales.",
 
   "SMALLERMAP-MAP_SCALE.title": "Map Scale",
   "SMALLERMAP-MAP_SCALE.hover.desc": "Default: 0.43",
