@@ -11,6 +11,7 @@ public static class ScaleHelper
 {
     public static MethodInfo? MapScalePropertyGetter = AccessTools.PropertyGetter(typeof(ScaleHelper), nameof(EffectiveMapScale));
     public static MethodInfo? IconScalePropertyGetter = AccessTools.PropertyGetter(typeof(ScaleHelper), nameof(EffectiveIconScale));
+    public static MethodInfo? CharIconScalePropertyGetter = AccessTools.PropertyGetter(typeof(ScaleHelper), nameof(EffectiveCharIconScale));
     public static MethodInfo? RoomOffsetYPropertyGetter = AccessTools.PropertyGetter(typeof(ScaleHelper), nameof(EffectiveRoomOffsetY));
     public static MethodInfo? BossOffsetYPropertyGetter = AccessTools.PropertyGetter(typeof(ScaleHelper), nameof(EffectiveBossOffsetY));
     public static MethodInfo? Boss2OffsetYPropertyGetter = AccessTools.PropertyGetter(typeof(ScaleHelper), nameof(EffectiveBoss2OffsetY));
@@ -25,6 +26,7 @@ public static class ScaleHelper
 
     private static float EffectiveMapScale => IsDisabled ? 1f : Config.MapScale;
     private static float EffectiveIconScale => IsDisabled ? 1f : Config.IconScale;
+    private static float EffectiveCharIconScale => IsDisabled ? 1f : Config.CharIconScale;
     private static float EffectiveRoomOffsetY => IsDisabled ? 0f : Config.RoomOffsetY;
     private static float EffectiveBossOffsetY => IsDisabled ? 0f : Config.BossOffsetY;
     private static float EffectiveBoss2OffsetY => IsDisabled ? 0f : Config.Boss2OffsetY;
@@ -49,6 +51,7 @@ public static class ScaleHelper
     {
         MapScalePropertyGetter = null;
         IconScalePropertyGetter = null;
+        CharIconScalePropertyGetter = null;
         RoomOffsetYPropertyGetter = null;
         BossOffsetYPropertyGetter = null;
         Boss2OffsetYPropertyGetter = null;

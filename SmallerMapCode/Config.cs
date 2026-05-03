@@ -15,6 +15,9 @@ internal class Config : SimpleModConfig
     [ConfigSlider(0.01, 1.00, 0.01, Format = "{0:0.00}")]
     public static float IconScale { get; set; } = 0.55f;
 
+    [ConfigSlider(0.01, 1.00, 0.01, Format = "{0:0.00}")]
+    public static float CharIconScale { get; set; } = 0.55f;
+
     [ConfigSlider(-200, 200, 1)]
     public static float RoomOffsetY { get; set; } = -75f;
 

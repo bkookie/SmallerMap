@@ -16,6 +16,9 @@
   "SMALLERMAP-ICON_SCALE.title": "Icon Scale",
   "SMALLERMAP-ICON_SCALE.hover.desc": "Default: 0.55",
 
+  "SMALLERMAP-CHAR_ICON_SCALE.title": "Char Icon Scale",
+  "SMALLERMAP-CHAR_ICON_SCALE.hover.desc": "Default: 0.55\n\n(single player only)",
+
   "SMALLERMAP-ROOM_OFFSET_Y.title": "Room Offset Y",
   "SMALLERMAP-ROOM_OFFSET_Y.hover.desc": "Negative values shift all normal rooms upwards.\nDefault: -75",
 
