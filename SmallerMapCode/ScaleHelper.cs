@@ -25,7 +25,7 @@ public static class ScaleHelper
     private static bool IsDisabled => Config.DisableMod || Config.DisableInMultiplayer && RunManager.Instance.IsInProgress && !RunManager.Instance.IsSinglePlayerOrFakeMultiplayer;
 
     private static float EffectiveMapScale => IsDisabled ? 1f : Config.MapScale;
-    private static float EffectiveIconScale => IsDisabled ? 1f : Config.IconScale;
+    private static float EffectiveIconScale => IsDisabled ? 1f : Config.RoomIconScale;
     private static float EffectiveCharIconScale => IsDisabled ? 1f : Config.CharIconScale;
     private static float EffectiveRoomOffsetY => IsDisabled ? 0f : Config.RoomOffsetY;
     private static float EffectiveBossOffsetY => IsDisabled ? 0f : Config.BossOffsetY;

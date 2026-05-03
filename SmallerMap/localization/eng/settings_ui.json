@@ -13,8 +13,8 @@
   "SMALLERMAP-MAP_SCALE.title": "Map Scale",
   "SMALLERMAP-MAP_SCALE.hover.desc": "Default: 0.43",
 
-  "SMALLERMAP-ICON_SCALE.title": "Icon Scale",
-  "SMALLERMAP-ICON_SCALE.hover.desc": "Default: 0.55",
+  "SMALLERMAP-ROOM_ICON_SCALE.title": "Room Icon Scale",
+  "SMALLERMAP-ROOM_ICON_SCALE.hover.desc": "Default: 0.55",
 
   "SMALLERMAP-CHAR_ICON_SCALE.title": "Char Icon Scale",
   "SMALLERMAP-CHAR_ICON_SCALE.hover.desc": "Default: 0.55\n\n(single player only)",

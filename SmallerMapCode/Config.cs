@@ -13,7 +13,7 @@ internal class Config : SimpleModConfig
     public static float MapScale { get; set; } = 0.43f;
 
     [ConfigSlider(0.01, 1.00, 0.01, Format = "{0:0.00}")]
-    public static float IconScale { get; set; } = 0.55f;
+    public static float RoomIconScale { get; set; } = 0.55f;
 
     [ConfigSlider(0.01, 1.00, 0.01, Format = "{0:0.00}")]
     public static float CharIconScale { get; set; } = 0.55f;
