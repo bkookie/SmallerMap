@@ -7,6 +7,7 @@ internal class Config : SimpleModConfig
 {
     public static bool DisableMod { get; set; } = false;
     public static bool DisableInMultiplayer { get; set; } = true;
+    public static bool LockScrollPosition { get; set; } = false;
 
     [ConfigSlider(0.01, 1.00, 0.01, Format = "{0:0.00}")]
     public static float MapScale { get; set; } = 0.43f;

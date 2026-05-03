@@ -53,7 +53,7 @@ public static class ScaleMapPatch
                         ScaleHelper.InsertCallInstruction(codes, ref i, ScaleHelper.BossOffsetYPropertyGetter!, OpCodes.Add);
                     }
                     else if (operand == -2280f) // Boss 2. Relies on Boss 1 appearing first. By default, places this a set distance above Boss 1
-                    {                        
+                    {
                         codes[i] = new CodeInstruction(OpCodes.Call, ScaleHelper.Boss2OffsetYPropertyGetter!); // Replace the constant with property getter.
                     }
                     else // Scale normally
@@ -83,5 +83,64 @@ public static class ScaleMapPatch
         }
 
         return codes;
+    }
+}
+
+// Set the scroll pos on map open
+// Entering a new act seems to skip this method, which works well to reset the scroll pos down to the ancient
+[HarmonyPatch(typeof(NMapScreen), nameof(NMapScreen.Open), MethodType.Normal)]
+public static class SetScrollPositionOnOpenPatch
+{
+    [HarmonyTranspiler]
+    private static IEnumerable<CodeInstruction> SetScrollPositionOnOpen(IEnumerable<CodeInstruction> instructions)
+    {
+        // Look for the first Add instruction after encountering field _distY (should be the first instance of _distY)
+        FieldInfo referenceField = AccessTools.Field(typeof(NMapScreen), nameof(NMapScreen._distY));
+        bool foundReferenceInstruction = false;
+
+        List<CodeInstruction> codes = [.. instructions];
+        for (int i = 0; i < codes.Count; i++)
+        {
+            if (codes[i].LoadsField(referenceField))
+            {
+                foundReferenceInstruction = true;
+            }
+            else if (foundReferenceInstruction && codes[i].opcode == OpCodes.Add)
+            {
+                codes.Insert(++i, new CodeInstruction(OpCodes.Call, ScaleHelper.ScrollPosYMethod));
+            }
+        }
+        return codes;
+    }
+}
+
+// Store the current scroll pos when manually changed (Mouse, ScrollWheel, Controller)
+[HarmonyPatch(typeof(NMapScreen), nameof(NMapScreen.ProcessMouseEvent), MethodType.Normal)]
+public static class MouseEventPatch
+{
+    [HarmonyTranspiler]
+    private static IEnumerable<CodeInstruction> MouseEvent(IEnumerable<CodeInstruction> instructions)
+    {
+        return ScaleHelper.StoreTargetDragPosY(instructions);
+    }
+}
+
+[HarmonyPatch(typeof(NMapScreen), nameof(NMapScreen.ProcessScrollEvent), MethodType.Normal)]
+public static class ScrollEventPatch
+{
+    [HarmonyTranspiler]
+    private static IEnumerable<CodeInstruction> ScrollEvent(IEnumerable<CodeInstruction> instructions)
+    {
+        return ScaleHelper.StoreTargetDragPosY(instructions);
+    }
+}
+
+[HarmonyPatch(typeof(NMapScreen), nameof(NMapScreen.ProcessControllerEvent), MethodType.Normal)]
+public static class ControllerEventPatch
+{
+    [HarmonyTranspiler]
+    private static IEnumerable<CodeInstruction> ControllerEvent(IEnumerable<CodeInstruction> instructions)
+    {
+        return ScaleHelper.StoreTargetDragPosY(instructions);
     }
 }

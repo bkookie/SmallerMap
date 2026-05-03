@@ -7,6 +7,9 @@
   "SMALLERMAP-DISABLE_IN_MULTIPLAYER.title": "Disable In Multiplayer",
   "SMALLERMAP-DISABLE_IN_MULTIPLAYER.hover.desc": "Drawings wont line up if players have different map scales.",
 
+  "SMALLERMAP-LOCK_SCROLL_POSITION.title": "Lock Scroll Position",
+  "SMALLERMAP-LOCK_SCROLL_POSITION.hover.desc": "Prevents the map from automatically scrolling as you climb.\n\nIf disabled, the map will only scroll up to keep the current room no higher than the center of the screen.",
+
   "SMALLERMAP-MAP_SCALE.title": "Map Scale",
   "SMALLERMAP-MAP_SCALE.hover.desc": "Default: 0.43",
 

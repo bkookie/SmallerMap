@@ -2,6 +2,7 @@
 using System.Reflection.Emit;
 using Godot;
 using HarmonyLib;
+using MegaCrit.Sts2.Core.Nodes.Screens.Map;
 using MegaCrit.Sts2.Core.Runs;
 
 namespace SmallerMap.SmallerMapCode;
@@ -14,6 +15,12 @@ public static class ScaleHelper
     public static MethodInfo? BossOffsetYPropertyGetter = AccessTools.PropertyGetter(typeof(ScaleHelper), nameof(EffectiveBossOffsetY));
     public static MethodInfo? Boss2OffsetYPropertyGetter = AccessTools.PropertyGetter(typeof(ScaleHelper), nameof(EffectiveBoss2OffsetY));
 
+    public static MethodInfo? ScrollPosYMethod = AccessTools.Method(typeof(ScaleHelper), nameof(GetEffectiveScrollPosY), [typeof(float)]);
+    public static MethodInfo? MaxScrollPosYPropertySetter = AccessTools.PropertySetter(typeof(ScaleHelper), nameof(MaxScrollPosY));
+
+    public static FieldInfo? Vector2YField = AccessTools.Field(typeof(Vector2), nameof(Vector2.Y));
+    public static FieldInfo? TargetDragPosField = AccessTools.Field(typeof(NMapScreen), nameof(NMapScreen._targetDragPos));
+
     private static bool IsDisabled => Config.DisableMod || Config.DisableInMultiplayer && RunManager.Instance.IsInProgress && !RunManager.Instance.IsSinglePlayerOrFakeMultiplayer;
 
     private static float EffectiveMapScale => IsDisabled ? 1f : Config.MapScale;
@@ -21,6 +28,22 @@ public static class ScaleHelper
     private static float EffectiveRoomOffsetY => IsDisabled ? 0f : Config.RoomOffsetY;
     private static float EffectiveBossOffsetY => IsDisabled ? 0f : Config.BossOffsetY;
     private static float EffectiveBoss2OffsetY => IsDisabled ? 0f : Config.Boss2OffsetY;
+    private static float MaxScrollPosY { get; set; } = float.MinValue; // Stores the last used scroll position (usually from user input)
+
+    /// <summary>
+    /// Returns the Y position that the map should be scrolled to.
+    /// </summary>
+    /// <param name="preferredY">The value that the game calculated.</param>
+    private static float GetEffectiveScrollPosY(float preferredY)
+    {
+        if (Config.DisableMod)
+            return preferredY;
+
+        if (Config.LockScrollPosition && MaxScrollPosY != float.MinValue)
+            return MaxScrollPosY;
+
+        return Mathf.Max(preferredY, MaxScrollPosY);
+    }
 
     public static void ClearCachedFields()
     {
@@ -29,6 +52,12 @@ public static class ScaleHelper
         RoomOffsetYPropertyGetter = null;
         BossOffsetYPropertyGetter = null;
         Boss2OffsetYPropertyGetter = null;
+
+        ScrollPosYMethod = null;
+        MaxScrollPosYPropertySetter = null;
+
+        Vector2YField = null;
+        TargetDragPosField = null;
     }
 
     /// <summary>
@@ -79,6 +108,26 @@ public static class ScaleHelper
                 codes.Insert(++i, new CodeInstruction(OpCodes.Call, typeof(Vector2).GetMethod("op_Multiply", [typeof(Vector2), typeof(float)]))); // Vector2.One * scale
 
                 numInstancesToEdit--;
+            }
+        }
+
+        return codes;
+    }
+
+    public static IEnumerable<CodeInstruction> StoreTargetDragPosY(IEnumerable<CodeInstruction> instructions)
+    {
+        List<CodeInstruction> codes = [.. instructions];
+
+        for (int i = 0; i < codes.Count; i++)
+        {
+            if (codes[i].StoresField(TargetDragPosField))
+            {
+                // insert before this line
+                i--;
+                codes.Insert(++i, new CodeInstruction(OpCodes.Dup));
+                codes.Insert(++i, new CodeInstruction(OpCodes.Ldfld, Vector2YField));
+                codes.Insert(++i, new CodeInstruction(OpCodes.Call, MaxScrollPosYPropertySetter));
+                i++;
             }
         }
 
