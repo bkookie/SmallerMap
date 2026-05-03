@@ -5,5 +5,5 @@
 
 using System.Diagnostics.CodeAnalysis;
 
-[assembly: SuppressMessage("Performance", "CA1859:Use concrete types when possible for improved performance", Justification = "<Pending>", Scope = "member", Target = "~M:SmallerMap.SmallerMapCode.ScaleMapPatch.ScaleMap(System.Collections.Generic.IEnumerable{HarmonyLib.CodeInstruction})~System.Collections.Generic.IEnumerable{HarmonyLib.CodeInstruction}")]
+[assembly: SuppressMessage("Performance", "CA1859:Use concrete types when possible for improved performance", Justification = "<Pending>")]
 [assembly: SuppressMessage("Usage", "CA2211:Non-constant fields should not be visible", Justification = "<Pending>")]

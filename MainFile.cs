@@ -23,6 +23,6 @@ public partial class MainFile : Node
 #endif
         harmony.PatchAll();
 
-        ScaleHelper.ClearCache();
+        ScaleHelper.ClearCachedFields();
     }
 }
