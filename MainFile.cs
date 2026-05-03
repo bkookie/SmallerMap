@@ -22,5 +22,7 @@ public partial class MainFile : Node
         Harmony.DEBUG = true;
 #endif
         harmony.PatchAll();
+
+        ScaleHelper.ClearCache();
     }
 }

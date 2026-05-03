@@ -43,22 +43,22 @@ public static class ScaleMapPatch
                 {
                     if (operand == 740f) // All rooms. By default, shifts all rooms up. Creates a little space between the Ancient and first row of rooms
                     {
-                        ScaleHelper.InsertCallInstruction(codes, ref i, ScaleHelper.RoomOffsetYProperty, OpCodes.Add);
+                        ScaleHelper.InsertCallInstruction(codes, ref i, ScaleHelper.RoomOffsetYProperty!, OpCodes.Add);
                     }
                     else if (operand == -1980f) // Boss 1. By default, shifts Boss 1 down a little
                     {
                         // -1980 * MapScale + BossOffsetY
 
-                        ScaleHelper.InsertCallInstruction(codes, ref i, ScaleHelper.MapScaleProperty, OpCodes.Mul);
-                        ScaleHelper.InsertCallInstruction(codes, ref i, ScaleHelper.BossOffsetYProperty, OpCodes.Add);
+                        ScaleHelper.InsertCallInstruction(codes, ref i, ScaleHelper.MapScaleProperty!, OpCodes.Mul);
+                        ScaleHelper.InsertCallInstruction(codes, ref i, ScaleHelper.BossOffsetYProperty!, OpCodes.Add);
                     }
                     else if (operand == -2280f) // Boss 2. Relies on Boss 1 appearing first. By default, places this a set distance above Boss 1
                     {                        
-                        codes[i] = new CodeInstruction(OpCodes.Call, ScaleHelper.Boss2OffsetYProperty); // Replace the constant with property getter.
+                        codes[i] = new CodeInstruction(OpCodes.Call, ScaleHelper.Boss2OffsetYProperty!); // Replace the constant with property getter.
                     }
                     else // Scale normally
                     {
-                        ScaleHelper.InsertCallInstruction(codes, ref i, ScaleHelper.MapScaleProperty, OpCodes.Mul);
+                        ScaleHelper.InsertCallInstruction(codes, ref i, ScaleHelper.MapScaleProperty!, OpCodes.Mul);
                     }
                 }
             }

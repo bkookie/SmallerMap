@@ -8,11 +8,11 @@ namespace SmallerMap.SmallerMapCode;
 
 public static class ScaleHelper
 {
-    public static readonly MethodInfo MapScaleProperty = AccessTools.PropertyGetter(typeof(ScaleHelper), nameof(EffectiveMapScale));
-    public static readonly MethodInfo IconScaleProperty = AccessTools.PropertyGetter(typeof(ScaleHelper), nameof(EffectiveIconScale));
-    public static readonly MethodInfo RoomOffsetYProperty = AccessTools.PropertyGetter(typeof(ScaleHelper), nameof(EffectiveRoomOffsetY));
-    public static readonly MethodInfo BossOffsetYProperty = AccessTools.PropertyGetter(typeof(ScaleHelper), nameof(EffectiveBossOffsetY));
-    public static readonly MethodInfo Boss2OffsetYProperty = AccessTools.PropertyGetter(typeof(ScaleHelper), nameof(EffectiveBoss2OffsetY));
+    public static MethodInfo? MapScaleProperty = AccessTools.PropertyGetter(typeof(ScaleHelper), nameof(EffectiveMapScale));
+    public static MethodInfo? IconScaleProperty = AccessTools.PropertyGetter(typeof(ScaleHelper), nameof(EffectiveIconScale));
+    public static MethodInfo? RoomOffsetYProperty = AccessTools.PropertyGetter(typeof(ScaleHelper), nameof(EffectiveRoomOffsetY));
+    public static MethodInfo? BossOffsetYProperty = AccessTools.PropertyGetter(typeof(ScaleHelper), nameof(EffectiveBossOffsetY));
+    public static MethodInfo? Boss2OffsetYProperty = AccessTools.PropertyGetter(typeof(ScaleHelper), nameof(EffectiveBoss2OffsetY));
 
     private static bool IsDisabled => Config.DisableMod || Config.DisableInMultiplayer && RunManager.Instance.IsInProgress && !RunManager.Instance.IsSinglePlayerOrFakeMultiplayer;
 
@@ -21,6 +21,15 @@ public static class ScaleHelper
     private static float EffectiveRoomOffsetY => IsDisabled ? 0f : Config.RoomOffsetY;
     private static float EffectiveBossOffsetY => IsDisabled ? 0f : Config.BossOffsetY;
     private static float EffectiveBoss2OffsetY => IsDisabled ? 0f : Config.Boss2OffsetY;
+
+    public static void ClearCache()
+    {
+        MapScaleProperty = null;
+        IconScaleProperty = null;
+        RoomOffsetYProperty = null;
+        BossOffsetYProperty = null;
+        Boss2OffsetYProperty = null;
+    }
 
     /// <summary>
     /// Pushes a float constant onto the stack, then performs an operation on it.

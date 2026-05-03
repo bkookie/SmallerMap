@@ -10,6 +10,6 @@ public static class ScaleCircleVfxPatch
     [HarmonyTranspiler]
     private static IEnumerable<CodeInstruction> ScaleCircleVfx(IEnumerable<CodeInstruction> instructions)
     {
-        return ScaleHelper.ScaleVector2Identities(instructions, ScaleHelper.IconScaleProperty);
+        return ScaleHelper.ScaleVector2Identities(instructions, ScaleHelper.IconScaleProperty!);
     }
 }
