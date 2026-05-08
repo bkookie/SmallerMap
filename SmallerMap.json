@@ -3,9 +3,15 @@
   "name": "Smaller Map",
   "author": "chunker",
   "description": "Shrink the map to fit on the screen without scrolling.",
-  "version": "v1.3.0",
+  "version": "v1.3.1",
   "has_pck": true,
   "has_dll": true,
-  "dependencies": ["BaseLib"],
-  "affects_gameplay": false
+  "affects_gameplay": false,
+  "min_game_version": "0.105.0",
+  "dependencies": [
+    {
+      "id": "BaseLib",
+      "min_version": "3.1.2"
+    }
+  ]
 }
