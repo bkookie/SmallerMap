@@ -10,6 +10,9 @@
   "SMALLERMAP-LOCK_SCROLL_POSITION.title": "Lock Scroll Position",
   "SMALLERMAP-LOCK_SCROLL_POSITION.hover.desc": "Prevents the map from automatically scrolling as you climb.\n\nIf disabled, the map will only scroll up to keep the current room no higher than the center of the screen.",
 
+  "SMALLERMAP-SCROLL_OFFSET.title": "Scroll Offset",
+  "SMALLERMAP-SCROLL_OFFSET.hover.desc": "Adjusts the point that the map will try to place in the center of the screen.\nDefault: 0 (the current room). Higher values will tend to scroll the map upwards to bring the boss into view earlier.",
+
   "SMALLERMAP-MAP_SCALE.title": "Map Scale",
   "SMALLERMAP-MAP_SCALE.hover.desc": "Default: 0.43",
 

@@ -44,7 +44,7 @@ public static class ScaleHelper
         if (Config.LockScrollPosition && MaxScrollPosY != float.MinValue)
             return MaxScrollPosY;
 
-        return Mathf.Max(preferredY, MaxScrollPosY);
+        return Mathf.Max(preferredY + Config.ScrollOffset, MaxScrollPosY);
     }
 
     public static void ClearCachedFields()
