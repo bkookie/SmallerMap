@@ -22,8 +22,7 @@ public static class ScaleHelper
     public static FieldInfo? Vector2YField = AccessTools.Field(typeof(Vector2), nameof(Vector2.Y));
     public static FieldInfo? TargetDragPosField = AccessTools.Field(typeof(NMapScreen), nameof(NMapScreen._targetDragPos));
 
-    private static bool IsDisabled => Config.DisableMod || Config.DisableInMultiplayer && RunManager.Instance.IsInProgress && !RunManager.Instance.IsSinglePlayerOrFakeMultiplayer;
-
+    private static bool IsDisabled => Config.DisableMod || Config.DisableInMultiplayer && RunManager.Instance.IsInProgress && !RunManager.Instance.IsSingleplayerOrFakeMultiplayer;
     private static float EffectiveMapScale => IsDisabled ? 1f : Config.MapScale;
     private static float EffectiveIconScale => IsDisabled ? 1f : Config.RoomIconScale;
     private static float EffectiveCharIconScale => IsDisabled ? 1f : Config.CharIconScale;
